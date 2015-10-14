@@ -52,7 +52,7 @@ tracker.addImages = function() {
   img0Loc.src = 'img/' + tracker.burgArray[tracker.leftImage].path;
   tracker.rightImage = tracker.randImg();
   img1Loc.src = 'img/' + tracker.burgArray[tracker.rightImage].path;
-  if (img0Loc.src == img1Loc.src) {
+  if (tracker.leftImage === tracker.rightImage) {
     img1Loc.src = 'img/' + tracker.burgArray[tracker.randImg()].path;
   };
   //console.log(tracker.leftImage, tracker.rightImage);
