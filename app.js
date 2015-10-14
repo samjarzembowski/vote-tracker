@@ -40,6 +40,7 @@ var tracker = {
   leftImage: '',
   rightImage: '',
 };
+console.log(tracker.burgArray);
 
 tracker.randImg = function() {
   return Math.floor(Math.random() * tracker.burgArray.length);
@@ -59,10 +60,38 @@ tracker.addImages = function() {
 };
 
 
+//Click one image to replace both images with new random.  Need to add vote tracking
+var vote0 = document.getElementById('img0');
+var vote1 = document.getElementById('img1');
+
+var data = {
+  labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"],
+  datasets: [
+    { 
+    label: "Yummy burgers",
+    fillColor: "#000000",
+    strokeColor: "#000000",
+    highlightFill: "#000000",
+    highlightStroke: "#000000",
+    data : [tracker.burgArray[0].vote, tracker.burgArray[1].vote, tracker.burgArray[2].vote, tracker.burgArray[3].vote, tracker.burgArray[4].vote, tracker.burgArray[5].vote, tracker.burgArray[6].vote, tracker.burgArray[7].vote, tracker.burgArray[8].vote, tracker.burgArray[9].vote, tracker.burgArray[10].vote, tracker.burgArray[11].vote, tracker.burgArray[12].vote, tracker.burgArray[13].vote, tracker.burgArray[14].vote, tracker.burgArray[15].vote, tracker.burgArray[16].vote, tracker.burgArray[17].vote, tracker.burgArray[18].vote, tracker.burgArray[19].vote]
+    }
+  ]
+}
+
+function mkChart() {
+  var barChart = document.getElementById('brgchart').getContext('2d');
+  var brgChart = new Chart(barChart).Bar(data);
+};
+
+mkChart();
+
+
 tracker.voteTrackL = function() {
   console.log('clicked left image!');
-  tracker.burgArray[tracker.leftImage].vote += 1
+  tracker.burgArray[tracker.leftImage].vote += 1;
+  data.datasets[0].data[tracker.leftImage] += 1;
   tracker.addImages();
+  mkChart();
   // for (var i = 0; i < tracker.burgArray.length; i++) {
   //   var num = tracker.burgArray[i].name;
   //   var grabLi = document.getElementById(num);
@@ -74,12 +103,12 @@ tracker.voteTrackL = function() {
 tracker.voteTrackR = function() {
   console.log('clicked right image!');
   tracker.burgArray[tracker.rightImage].vote += 1;
+  data.datasets[0].data[tracker.rightImage]  += 1;
   tracker.addImages();
+  mkChart();
 };
 
-//Click one image to replace both images with new random.  Need to add vote tracking
-var vote0 = document.getElementById('img0');
-var vote1 = document.getElementById('img1');
+
 vote0.addEventListener('click', tracker.voteTrackL);
 vote1.addEventListener('click', tracker.voteTrackR);
 
