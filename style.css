@@ -1,10 +1,14 @@
+* {
+  background-color: #D4EE9F;
+  color: #AA3939;
+  font-family: 'Libre Baskerville', serif;
+}
+
 body {
   width: 90%;
   margin: 0 auto;
   text-align: center;
 }
-
-
 
 #images {
   display: flex;

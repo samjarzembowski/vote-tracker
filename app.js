@@ -5,7 +5,7 @@ var Burger = function(path, name) {
   this.vote = 0;
 };
 
-//Create Objects...Want to shorten this up?
+//Create Objects
 var b1 = new Burger('burg1.jpg', 'b1');
 var b2 = new Burger('burg2.jpg', 'b2');
 var b3 = new Burger('burg3.png', 'b3');
@@ -67,11 +67,11 @@ var vote1 = document.getElementById('img1');
 var data = {
   labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"],
   datasets: [
-    { 
+    {
     label: "Yummy burgers",
-    fillColor: "#000000",
+    fillColor: "#AA3939",
     strokeColor: "#000000",
-    highlightFill: "#000000",
+    highlightFill: "#FFAAAA",
     highlightStroke: "#000000",
     data : [tracker.burgArray[0].vote, tracker.burgArray[1].vote, tracker.burgArray[2].vote, tracker.burgArray[3].vote, tracker.burgArray[4].vote, tracker.burgArray[5].vote, tracker.burgArray[6].vote, tracker.burgArray[7].vote, tracker.burgArray[8].vote, tracker.burgArray[9].vote, tracker.burgArray[10].vote, tracker.burgArray[11].vote, tracker.burgArray[12].vote, tracker.burgArray[13].vote, tracker.burgArray[14].vote, tracker.burgArray[15].vote, tracker.burgArray[16].vote, tracker.burgArray[17].vote, tracker.burgArray[18].vote, tracker.burgArray[19].vote]
     }
@@ -83,8 +83,6 @@ function mkChart() {
   var brgChart = new Chart(barChart).Bar(data);
 };
 
-mkChart();
-
 
 tracker.voteTrackL = function() {
   console.log('clicked left image!');
@@ -92,12 +90,6 @@ tracker.voteTrackL = function() {
   data.datasets[0].data[tracker.leftImage] += 1;
   tracker.addImages();
   mkChart();
-  // for (var i = 0; i < tracker.burgArray.length; i++) {
-  //   var num = tracker.burgArray[i].name;
-  //   var grabLi = document.getElementById(num);
-  //   grabLi.appendChild(document.createTextNode(tracker.burgArray[i].vote));
-  //   grabLi.appendChild();
-  //};
 };
 
 tracker.voteTrackR = function() {
@@ -113,3 +105,13 @@ vote0.addEventListener('click', tracker.voteTrackL);
 vote1.addEventListener('click', tracker.voteTrackR);
 
 tracker.addImages();
+mkChart();
+
+//CHECK TO SEE IF DATA.DATASETS.DATA[i] !=0
+//IF !0 FOUND IN THE ARRAY SAVE ARRAY TO LOCAL STORAGE
+//IT WILL BE STORED AS A STRING
+//ON PAGE LOAD, CHECK LOCAL STORAGE FOR THE SAVED ARRAY
+//IF FOUND, CONVERT ELEMENTS IN ARRAY BACK TO NUMBERALS
+//AFTER CONVERSION PUSH TO TRACKER.BURGARRAY[0].VOTES &C.
+
+
