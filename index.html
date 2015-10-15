@@ -4,25 +4,32 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>The Burger Rating Game</title>
-  <link rel="stylesheet" href="style.css" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Libre+Baskerville' rel='stylesheet' type='text/css'><link rel="stylesheet" href="style.css" type="text/css">
+  <script src="Chart.js"></script>
 </head>
+
 <body>
   <header id="header" class="">
   <h1>R U READY TO VOTE FOR UR FAVORITE BURG??</h1>
+  <h4>CLICK ON THE BURG U LOVE TO VOTE</h4>
   </header>
 
   <main id="content">
-    <section id="img0" class="image">
-      <!-- image tag with random burg, submit button below that -->
+    <section id="images">
+
+      <figure id="s0" class="image">
+        <img src="" id="img0" class="image">
+      </figure>
+
+      <figure id="s1" class="image">
+        <img src="" id="img1" class="image">
+      </figure>
+
     </section>
-    <h4>OR</h4>
-    <section id="img1" class="image">
-      <!-- image tag with random burg, submit button below that -->
-    </section>
-    <div id="results">
-      <!-- voting results chart goes here -->
-    </div>
+
+    <canvas id="brgchart" width="700" height="300"></canvas>
   </main>
+
 
   <script src="app.js" type="text/javascript"></script>
 </body>
